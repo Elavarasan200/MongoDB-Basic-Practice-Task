@@ -1,102 +1,163 @@
 📘 MongoDB CRUD Operations & Query Operators – Explanation
 🟢 1. Database & Collection Setup
+
 use studentDB
+
 Switches to a database named studentDB.
 If it doesn’t exist, MongoDB creates it automatically when data is inserted.
+
 db.createCollection("students")
+
 Explicitly creates a collection called students.
 Collections in MongoDB are like tables in SQL.
+
 🟢 2. INSERT OPERATIONS
+
 insertOne()
+
 db.students.insertOne({ ... })
+
 Inserts a single document into the collection.
 Example: Adds one student record (Arun).
+
 insertMany()
+
 db.students.insertMany([ ... ])
 Inserts multiple documents at once.
 More efficient than inserting one by one.
+
 🟢 3. READ OPERATIONS
+
 find()
+
 db.students.find()
+
 Retrieves all documents in the collection.
+
 Filtered find()
+
 db.students.find({ course: "MERN Stack" })
+
 Returns only students enrolled in MERN Stack course.
+
 🟢 4. UPDATE OPERATIONS
+
 updateOne()
+
 db.students.updateOne(
+
   { name: "Arun" },
+  
   { $set: { status: "completed" } }
+  
 )
+
 Updates only the first matching document.
+
 $set modifies specific fields.
+
 updateMany()
+
 db.students.updateMany(
+
   { course: "MERN Stack" },
+  
   { $set: { status: "completed" } }
+  
 )
 Updates all documents matching condition.
+
 🟢 5. DELETE OPERATIONS
+
 deleteOne()
+
 db.students.deleteOne({ name: "Meena" })
+
 Deletes only one matching document.
+
 deleteMany()
+
 db.students.deleteMany({})
+
 Deletes all documents in collection (⚠ dangerous).
+
 🟢 6. QUERY OPERATORS
+
 $gt (Greater Than)
+
 { age: { $gt: 21 } }
+
 Finds students older than 21.
+
 $lt (Less Than)
+
 { age: { $lt: 23 } }
+
 Finds students younger than 23.
+
 $in
 { course: { $in: ["MERN Stack", "Data Science"] } }
+
 Matches any value in the list.
+
 $and
 {
   $and: [
+  
     { course: "MERN Stack" },
     { status: "completed" }
+    
   ]
 }
+
 Both conditions must be true.
+
 $or
 {
   $or: [
+  
     { age: { $lt: 21 } },
     { status: "completed" }
+    
   ]
 }
 Either condition can be true.
+
 $exists
 { status: { $exists: true } }
 Checks if a field exists in documents.
+
 🟢 7. USE CASE: LIBRARY SYSTEM
+
 Switch Database
+
 db.getSiblingDB("libraryUseCase")
 Switches to another database named libraryUseCase.
+
 Insert Books
 db.library.books.insertMany([...])
 Adds multiple books into books collection.
+
 Find Books by Category
 db.library.books.find({ category: "Database" })
 Filters books by category.
+
 Update Stock
+
 db.library.books.updateOne(
   { title: "MongoDB Basics" },
   { $set: { stock: 15 } }
 )
 Updates stock quantity.
+
 Delete Book
 db.library.books.deleteOne({ title: "Web Development" })
 Removes one book document.
-📄 README.md FORMAT
+
 # MongoDB CRUD Operations & Query Operators
 
 This project demonstrates basic MongoDB operations using a `students` collection and a simple `library` use case.
 
----
 
 ## 📌 1. Database Setup
 
