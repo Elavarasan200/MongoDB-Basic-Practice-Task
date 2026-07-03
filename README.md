@@ -1,4 +1,5 @@
 📘 MongoDB CRUD Operations & Query Operators – Explanation
+
 🟢 1. Database & Collection Setup
 
 use studentDB
@@ -96,11 +97,13 @@ $lt (Less Than)
 Finds students younger than 23.
 
 $in
+
 { course: { $in: ["MERN Stack", "Data Science"] } }
 
 Matches any value in the list.
 
 $and
+
 {
   $and: [
   
@@ -113,6 +116,7 @@ $and
 Both conditions must be true.
 
 $or
+
 {
   $or: [
   
@@ -121,6 +125,7 @@ $or
     
   ]
 }
+
 Either condition can be true.
 
 $exists
